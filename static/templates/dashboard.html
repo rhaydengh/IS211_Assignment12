@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>X University Portal</title>
+  </head>
+
+    <body>
+
+      <h1>Dashboard</h1>
+
+    <TABLE BORDER="5"    WIDTH="50%"   CELLPADDING="4" CELLSPACING="3">
+
+
+       <TR>
+          <TH COLSPAN="3"><BR><H2>STUDENTS</H2>
+          </TH>
+       </TR>
+       <TR>
+          <TH>Student ID</TH>
+          <TH>Firstname</TH>
+          <TH>Lastname</TH>
+       </TR>
+       <TR ALIGN="CENTER">
+          <TD> 1 </TD>
+          <TD> Jill </TD>
+          <TD> Smith </TD>
+       </TR>
+       <TR ALIGN="CENTER">> 
+          <TD> 2 </TD>
+          <TD> Jack </TD>
+          <TD> Jones </TD>
+       </TR>
+       <TR ALIGN="CENTER">> 
+          <TD> 3 </TD>
+          <TD> Sabrina </TD>
+          <TD> Thompson </TD>
+       </TR>
+       <TR ALIGN="CENTER">
+          <TD> {{ studentid }} </TD>
+          <TD> {{ firstname }} </TD>
+          <TD> {{ lastname }} </TD>
+       </TR>
+    </TABLE>
+    <br>
+
+
+    <TABLE BORDER="5"    WIDTH="50%"   CELLPADDING="4" CELLSPACING="3">
+
+       <TR>
+          <TH COLSPAN="4"><BR><H2>QUIZZES</H2>
+          </TH>
+       </TR>
+       <TR>
+          <TH>Quiz #</TH>
+          <TH>Subject</TH>
+          <TH>Questions</TH>
+          <TH>Date</TH>
+       </TR>
+       <TR ALIGN="CENTER">
+          <TD> 1 </TD>
+          <TD> Python Basics </TD>
+          <TD> 20 </TD>
+          <TD> Feb 20 2017 </TD>
+       </TR>
+       <TR ALIGN="CENTER">
+          <TD> 2 </TD>
+          <TD> Math </TD>
+          <TD> 10 </TD>
+          <TD> Feb 27 2017 </TD>
+       </TR>
+       <TR ALIGN="CENTER">
+          <TD> {{ quizid }} </TD>
+          <TD> {{ subject }} </TD>
+          <TD> {{ questions }} </TD>
+          <TD> {{ date }} </TD>
+        </TR>
+    </TABLE>
+    <br>
+
+
+    <TABLE BORDER="5"    WIDTH="50%"   CELLPADDING="4" CELLSPACING="3">
+
+       <TR>
+          <TH COLSPAN="3"><BR><H2>STUDENT RESULTS</H2>
+          </TH>
+       </TR>
+       <TR>
+          <TH>Student ID</TH>
+          <TH>Quiz ID</TH>
+          <TH>Score</TH>
+       </TR>
+       <TR ALIGN="CENTER">
+          <TD> 1 </TD>
+          <TD> 1 </TD>
+          <TD> 100 </TD>
+       <TR ALIGN="CENTER">
+          <TD> 1 </TD>
+          <TD> 2 </TD>
+          <TD> 90 </TD>
+         </TR>
+       <TR ALIGN="CENTER">
+          <TD> {{ student_id }} </TD>
+          <TD> {{ quiz_id }} </TD>
+          <TD> {{ score }} </TD>
+       </TR>
+    </TABLE>
+
+
+    <div>
+    <p>Add Student</p>
+    <form action ="/student/add" method="POST">
+    Student ID:
+    <input type="text" name="studentid"></input><br>
+    Firstname:
+    <input type="text" name="firstname"></input><br>
+    Lastname:
+    <input type="text" name="lastname"></input><br>
+    <input type="submit" value="Add Student">
+    </form>
+
+    <div>
+    <p>Add Quiz</p>
+    <form action ="/quiz/add" method="POST">
+    Quiz #:
+    <input type="text" name="quizid"></input><br>
+    Subject:
+    <input type="text" name="subject"></input><br>
+    Questions:
+    <input type="text" name="questions"></input><br>
+    Date:
+    <input type="text" name="date"></input><br>
+    <input type="submit" value="Add Quiz">
+    </form>
+
+    <div>
+    <p>Add Scores</p>
+    <form action ="/results/add" method="POST">
+    Student ID:
+    <input type="text" name="student_id"></input><br>
+    Quiz ID:
+    <input type="text" name="quiz_id"></input><br>
+    Score:
+    <input type="text" name="score"></input><br>
+    <input type="submit" value="Add Results">
+    </form>
+
+      <form action="/logout" method="post">
+        <dl>
+          <dd><input type=submit value=Logout>
+      </form
+
+
+  </body>
+</html>
