@@ -1,0 +1,19 @@
+
+CREATE TABLE students (
+studentid INTEGER PRIMARY KEY AUTOINCREMENT,
+firstname text not null,
+lastname text not null
+);
+
+CREATE TABLE quizzes (
+quizid INTEGER PRIMARY KEY AUTOINCREMENT,
+subject text not null,
+questions INTEGER,
+date text,
+);
+
+CREATE TABLE grades (
+student_id INTEGER FOREIGN KEY students(studentid),
+quiz_id INTEGER FOREIGN KEY quizzes(quizid),
+score INTEGER 
+);
