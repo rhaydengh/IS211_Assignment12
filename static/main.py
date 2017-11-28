@@ -1,7 +1,7 @@
 
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""Assignment 12"""
+"""Assignment 12, set up functions and templates, need to work in database connections and udpates"""
 
 from flask import Flask, render_template, request, redirect, session, url_for, g, abort, flash, escape
 from contextlib import closing
