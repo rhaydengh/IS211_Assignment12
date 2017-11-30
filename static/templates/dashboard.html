@@ -6,7 +6,7 @@
 
     <body>
 
-      <h1>Professor Dashboard</h1>
+      <h1>Dashboard</h1>
 
     <TABLE BORDER="5"    WIDTH="50%"   CELLPADDING="4" CELLSPACING="3">
 
@@ -20,26 +20,13 @@
           <TH>Firstname</TH>
           <TH>Lastname</TH>
        </TR>
+       {% for student in students %}
        <TR ALIGN="CENTER">
-          <TD> 1 </TD>
-          <TD> Jill </TD>
-          <TD> Smith </TD>
+           <TD><a href="/student/{{ student.studentid }}">{{ student.studentid }}</a></TD>
+           <TD>{{ student.firstname }}</TD>
+           <TD>{{ student.lastname }}</TD>
        </TR>
-       <TR ALIGN="CENTER">> 
-          <TD> 2 </TD>
-          <TD> Jack </TD>
-          <TD> Jones </TD>
-       </TR>
-       <TR ALIGN="CENTER">> 
-          <TD> 3 </TD>
-          <TD> Sabrina </TD>
-          <TD> Thompson </TD>
-       </TR>
-       <TR ALIGN="CENTER">
-          <TD> {{ studentid }} </TD>
-          <TD> {{ firstname }} </TD>
-          <TD> {{ lastname }} </TD>
-       </TR>
+       {% endfor %}
     </TABLE>
     <br>
 
@@ -51,29 +38,19 @@
           </TH>
        </TR>
        <TR>
-          <TH>Quiz #</TH>
-          <TH>Subject</TH>
-          <TH>Questions</TH>
-          <TH>Date</TH>
+         <TH>Quiz #</TH>
+         <TH>Subject</TH>
+         <TH>Questions</TH>
+         <TH>Date Given</TH>
        </TR>
+       {% for quiz in quizzes %}
        <TR ALIGN="CENTER">
-          <TD> 1 </TD>
-          <TD> Python Basics </TD>
-          <TD> 20 </TD>
-          <TD> Feb 20 2017 </TD>
+          <TD> {{ quiz.quizid }} </TD>
+          <TD> {{ quiz.subject }} </TD>
+          <TD> {{ quiz.questions }} </TD>
+          <TD> {{ quiz.date }} </TD>
        </TR>
-       <TR ALIGN="CENTER">
-          <TD> 2 </TD>
-          <TD> Math </TD>
-          <TD> 10 </TD>
-          <TD> Feb 27 2017 </TD>
-       </TR>
-       <TR ALIGN="CENTER">
-          <TD> {{ quizid }} </TD>
-          <TD> {{ subject }} </TD>
-          <TD> {{ questions }} </TD>
-          <TD> {{ date }} </TD>
-        </TR>
+       {% endfor %}
     </TABLE>
     <br>
 
@@ -89,28 +66,18 @@
           <TH>Quiz ID</TH>
           <TH>Score</TH>
        </TR>
+       {% for grade in qrades %}
        <TR ALIGN="CENTER">
-          <TD> 1 </TD>
-          <TD> 1 </TD>
-          <TD> 100 </TD>
-       <TR ALIGN="CENTER">
-          <TD> 1 </TD>
-          <TD> 2 </TD>
-          <TD> 90 </TD>
-         </TR>
-       <TR ALIGN="CENTER">
-          <TD> {{ student_id }} </TD>
-          <TD> {{ quiz_id }} </TD>
-          <TD> {{ score }} </TD>
+          <TD> {{ grade.student_id }} </TD>
+          <TD> {{ grade.quiz_id }} </TD>
+          <TD> {{ grade.score }} </TD>
+       {% endfor %}
        </TR>
     </TABLE>
-
 
     <div>
     <p>Add Student</p>
     <form action ="/student/add" method="POST">
-    Student ID:
-    <input type="text" name="studentid"></input><br>
     Firstname:
     <input type="text" name="firstname"></input><br>
     Lastname:
