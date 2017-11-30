@@ -6,14 +6,14 @@ lastname text not null
 );
 
 CREATE TABLE quizzes (
-quizid INTEGER PRIMARY KEY AUTOINCREMENT,
+quizid INTEGER PRIMARY KEY,
 subject text not null,
-questions INTEGER,
-date text,
+questions INTEGER not null,
+date text not null,
 );
 
 CREATE TABLE grades (
-student_id INTEGER FOREIGN KEY students(studentid),
-quiz_id INTEGER FOREIGN KEY quizzes(quizid),
-score INTEGER 
+student_id INTEGER PRIMARY KEY student_id),
+quiz_id INTEGER quiz_id not null,
+score INTEGER not null,
 );
