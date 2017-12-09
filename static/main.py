@@ -19,7 +19,7 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 
 
-conn = sqlite3.connect("hw12.db", timeout=5)
+conn = sql.connect("hw12.db", timeout=5)
 cursor = conn.cursor()
 cursor.execute("DROP TABLE IF EXISTS students;")
 cursor.execute("CREATE TABLE students (studentid INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -42,17 +42,17 @@ cursor.execute("INSERT INTO grades VALUES(1, 1, 85);")
 conn.commit()
 
 def connect_db():
-    return sqlite3.connect(app.config['DATABASE'])
+    return sql.connect(app.config['DATABASE'])
 
 @app.before_request
-def before_request():
-    g.db = connect_db()
-
-@app.teardown_request
+def before_request(t
 def teardown_request(exception):
     db = getattr(g, 'db', None)
     if db is not None:
-        db.close()
+        ):
+    g.db = connect_db()
+
+@app.teardown_requesdb.close()
 
 @app.route('/')
 def index():
@@ -89,16 +89,15 @@ def dashboard():
                for row in conng.fetchall()]
     return render_template("dashboard.html", students = students, quizzes = quizzes, grades=grades)
 
-
 @app.route('/student/add', methods=['GET', 'POST'])
-def newstudent():
-    if request.method == 'GET':
-        return render_template('addstudent.html')
-    elif request.method == 'POST':
-        g.db.execute('insert into students (firstname, lastname) values (?, ?)',
-                     [request.form['firstname'], request.form['lastname']])
-        g.db.commit()
-    return redirect(url_for('dashboard'))
+    def newstudent():    
+        if request.method == 'POST':        
+            g.db.execute('insert into students (firstname, lastname) values (?, ?)',                 
+                         [request.form['firstname'], request.form['lastname']])        
+            g.db.commit()        
+            return redirect(url_for('dashboard'))    
+        return render_template("addstudent.html")
+
 
 @app.route('/quiz/add', methods=['GET', 'POST'])
 def newquiz():
