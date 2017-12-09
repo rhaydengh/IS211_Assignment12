@@ -1,8 +1,8 @@
 
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""Assignment 12, addstudent and addquiz working from dashboard,
-need to work in separate html templates for addquiz, addstudent, addgrades"""
+"""Assignment 12, database doesn't update on dashboard until some data is entered,
+still working on view and add grades"""
 
 from flask import Flask, render_template, request, redirect, session, url_for, g, abort, flash, escape
 from contextlib import closing
