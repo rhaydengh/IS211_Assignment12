@@ -64,7 +64,15 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     username = request.form['username']
-    password = request.form['password']
+    password = request.form['password']@app.route('/results/add', methods=['GET', 'POST'])
+def newgrade():
+    if request.method == 'GET':
+        return render_template('addgrade.html')
+    elif request.method == 'POST':
+        g.db.execute('insert into grades (student_id, quiz_id, score) values (?, ?, ?)', 
+                     [request.form['student_id'], request.form['quiz_id'], request.form['score']])
+        g.db.commit()
+    return redirect(url_for('dashboard'))
     if username == 'admin' and password == 'password':
         session = request.form['username']
         return render_template('dashboard.html', username=username, password=password)
@@ -97,28 +105,25 @@ def dashboard():
             g.db.commit()        
             return redirect(url_for('dashboard'))    
         return render_template("addstudent.html")
-
-
+       
 @app.route('/quiz/add', methods=['GET', 'POST'])
-def newquiz():
-    if request.method == 'GET':
+    def newquiz():    
+        if request.method == 'POST':        
+            g.db.execute('insert into quizzes (subject, questions, date) values (?, ?, ?)',                     
+                         [request.form['subject'], request.form['questions'],request.form['date']])        
+            g.db.commit()        
+            return redirect(url_for('dashboard'))
         return render_template('addquiz.html')
-    elif request.method == 'POST':
-        g.db.execute('insert into quizzes (subject, questions, date) values (?, ?, ?)',
-                     [request.form['subject'], request.form['questions'],request.form['date']])
-        g.db.commit()
-    return redirect(url_for('dashboard'))
+
 
 @app.route('/results/add', methods=['GET', 'POST'])
-def newgrade():
-    if request.method == 'GET':
+    def newgrade():    
+        if request.method == 'POST':        
+            g.db.execute('insert into grades (student_id, quiz_id, score) values (?, ?, ?)',                     
+                         [request.form['student_id'], request.form['quiz_id'], request.form['score']])        
+            g.db.commit()        
+            return redirect(url_for('dashboard'))    
         return render_template('addgrade.html')
-    elif request.method == 'POST':
-        g.db.execute('insert into grades (student_id, quiz_id, score) values (?, ?, ?)', 
-                     [request.form['student_id'], request.form['quiz_id'], request.form['score']])
-        g.db.commit()
-    return redirect(url_for('dashboard'))
-
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 if __name__ == "__main__":
