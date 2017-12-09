@@ -9,8 +9,6 @@
       <h1>Dashboard</h1>
 
     <TABLE BORDER="5"    WIDTH="50%"   CELLPADDING="4" CELLSPACING="3">
-
-
        <TR>
           <TH COLSPAN="3"><BR><H2>STUDENTS</H2>
           </TH>
@@ -22,7 +20,7 @@
        </TR>
        {% for student in students %}
        <TR ALIGN="CENTER">
-           <TD><a href="/student/{{ student.studentid }}">{{ student.studentid }}</a></TD>
+           <TD><a href="{{ url_for('newgrade') }}">{{ student.studentid }}</a></TD>
            <TD>{{ student.firstname }}</TD>
            <TD>{{ student.lastname }}</TD>
        </TR>
@@ -30,6 +28,11 @@
     </TABLE>
     <br>
 
+
+<p>.....Click on a student's id number to view quiz results.....</p>
+<a href="{{ url_for('newstudent') }}">Add Student</a>
+<br>
+<br>
 
     <TABLE BORDER="5"    WIDTH="50%"   CELLPADDING="4" CELLSPACING="3">
 
@@ -54,68 +57,10 @@
     </TABLE>
     <br>
 
-
-    <TABLE BORDER="5"    WIDTH="50%"   CELLPADDING="4" CELLSPACING="3">
-
-       <TR>
-          <TH COLSPAN="3"><BR><H2>STUDENT RESULTS</H2>
-          </TH>
-       </TR>
-       <TR>
-          <TH>Student ID</TH>
-          <TH>Quiz ID</TH>
-          <TH>Score</TH>
-       </TR>
-       {% for grade in qrades %}
-       <TR ALIGN="CENTER">
-          <TD> {{ grade.student_id }} </TD>
-          <TD> {{ grade.quiz_id }} </TD>
-          <TD> {{ grade.score }} </TD>
-       {% endfor %}
-       </TR>
-    </TABLE>
-
-    <div>
-    <p>Add Student</p>
-    <form action ="/student/add" method="POST">
-    Firstname:
-    <input type="text" name="firstname"></input><br>
-    Lastname:
-    <input type="text" name="lastname"></input><br>
-    <input type="submit" value="Add Student">
-    </form>
-
-    <div>
-    <p>Add Quiz</p>
-    <form action ="/quiz/add" method="POST">
-    Quiz #:
-    <input type="text" name="quizid"></input><br>
-    Subject:
-    <input type="text" name="subject"></input><br>
-    Questions:
-    <input type="text" name="questions"></input><br>
-    Date:
-    <input type="text" name="date"></input><br>
-    <input type="submit" value="Add Quiz">
-    </form>
-
-    <div>
-    <p>Add Scores</p>
-    <form action ="/results/add" method="POST">
-    Student ID:
-    <input type="text" name="student_id"></input><br>
-    Quiz ID:
-    <input type="text" name="quiz_id"></input><br>
-    Score:
-    <input type="text" name="score"></input><br>
-    <input type="submit" value="Add Results">
-    </form>
-
-      <form action="/logout" method="post">
-        <dl>
-          <dd><input type=submit value=Logout>
-      </form
-
-
+<a href="{{ url_for('newquiz') }}">Add Quiz</a>      
+<br>      
+<br>      
+<a href="{{ url_for('newgrade') }}">Add Quiz Result</a>
+      
   </body>
 </html>
